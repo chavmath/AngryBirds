@@ -81,7 +81,7 @@ public class Game : MonoBehaviour
 
             }
             else if (numProjectiles == 0)
-                StartCoroutine(WaitToDestroy(0));
+                StartCoroutine(WaitToDestroy(0f));
         }
 
     }

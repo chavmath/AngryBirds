@@ -6,15 +6,15 @@ public class TargetDamage : MonoBehaviour {
 	public int hitPoints = 2;					//	The amount of damage our target can take
 	public Sprite damagedSprite;				//	The reference to our "damaged" sprite
 	public float damageImpactSpeed;				//	The speed threshold of colliding objects before the target takes damage
-	
-	
+
+    private GameControl control;
 	private int currentHitPoints;				//	The current amount of health our target has taken
 	private float damageImpactSpeedSqr;			//	The square value of Damage Impact Speed, for efficient calculation
 	private SpriteRenderer spriteRenderer;		//	The reference to this GameObject's sprite renderer
 	
 	void Start () {
 		spriteRenderer = GetComponent <SpriteRenderer> ();
-
+        control = FindObjectOfType<GameControl>();
         currentHitPoints = hitPoints;
 
 		//	Calculate the Damage Impact Speed Squared from the Damage Impact Speed
@@ -45,6 +45,7 @@ public class TargetDamage : MonoBehaviour {
 	void Kill () {
 		//	As the particle system is attached to this GameObject, when Killed, switch off all of the visible behaviours...
 		spriteRenderer.enabled = false;
+        control.CurrLevel.Currentscore += 8000;
 		GetComponent<Collider2D>().enabled = false;
 		GetComponent<Rigidbody2D>().isKinematic = true;
         Destroy(this.gameObject,.5f);
