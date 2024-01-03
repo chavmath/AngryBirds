@@ -45,11 +45,7 @@ public class GameControl : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        AllWorlds = new List<World>();
-        for (int i = 0; i < NumWorlds; i++)
-        {
-            AllWorlds.Add(new World());
-        }
+        AllWorlds = Information.Load();
 
 	}
 
@@ -80,5 +76,14 @@ public class GameControl : MonoBehaviour {
             level += 40;
 
         CurrentGame.InitLevel(level, 3);
+    }
+    void OnApplicationQuit()
+    {
+		Information.Save(AllWorlds);
+	}
+    public void ClearData()
+    {
+        PlayerPrefs.DeleteAll();
+        AllWorlds = Information.Load();
     }
 }

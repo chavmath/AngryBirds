@@ -5,13 +5,13 @@ public class Level
 {
     public Level()
     {
-        highscore = 0;
-        currentscore = 0;
-        unlocked = false;
-        OneStarReq = 10000;
-        TwoStarReq = 20000;
-        ThreeStarReq = 30000;
-    }
+		OneStarReq = 10000;
+		TwoStarReq = 20000;
+		ThreeStarReq = 30000;
+		highscore = 0;
+		currentscore = 0;
+		unlocked = false;
+	}
 
     public int OneStarReq, TwoStarReq, ThreeStarReq;
     public bool Defeated
